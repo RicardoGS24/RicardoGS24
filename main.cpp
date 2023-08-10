@@ -5,19 +5,26 @@
 
 int main()
 {
+ 
     Lista<int> intLista;
-    intLista.insert(15);
-    intLista.insert(23);
-    intLista.insert(50);
-    intLista.insert(54);
-    intLista.insert(56);
+    intLista.insert(1);
+    intLista.insert(2);
+    intLista.insert(3);
+    intLista.insert(4);
+    intLista.insert(5);
+
+    cout << "Cantidad de datos: " << intLista.getSize() << endl;
+    cout << "Elemento solicitado: " << intLista.getData(5) << endl;
+
+    // IMPRESIÓN DEL VECTOR
     intLista.print();
 
-    Lista<string> stringLista;
-    stringLista.insert("Ricardo");
-    stringLista.print();
-    intLista.printHello();
+    // IMPRESIÓN DEL VECTOR MODIFICADO
+    intLista.removeLast();    
+    intLista.print();
 
-    system("pause");
+    // IMPRIMIR EL VALOR MAYOR
+    cout << "El valor máximo es: " << intLista.getMax() << endl;
+
     return 0;
 }

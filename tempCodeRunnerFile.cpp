@@ -1,0 +1,1 @@
+    cout << intLista.getSize() << endl;

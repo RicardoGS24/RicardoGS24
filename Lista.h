@@ -29,18 +29,19 @@ class Lista {
                 cout << "NO HOY ELEMENTOS";
             }
             else{
-                cout << data[size-1] << endl;
-                size = size - 1;
+                //cout << data[size-1] << endl;
                 data.erase(data.begin()+ size-1);
+                size = size - 1;
             }
         }
 
         T getData(int p){
-            if (0 <= p < size){
-                return data[p];
+            if (0 <= p-1 < size){
+                return data[p-1];
             }
             else{
                 cout <<"NO EXISTE ESE ELEMENTO";
+                //return data[1];
             }
         }
 
@@ -48,19 +49,23 @@ class Lista {
             return size;    
         }
 
-        /*T getMax(){
-            template max = data[0];
-            template pos;
-            for (int i = 0; i < size; i++){
-                if (max >= int)
+        T getMax(){
+            //int pos = 0;
+            T max = data[0];
+
+            for (int i = 1; i < size; i++){
+                if (max <= data[i]){
+                    max = data[i];                    
+                }
             }
             return max;
-        }*/
+        }
 
         void print(){
             for (int i = 0;i < size;i++){
                 cout <<"["<<i<<"]"<< " - " << data[i] << endl;
             }
+            cout << endl;
         }
         
         void printHello(){
