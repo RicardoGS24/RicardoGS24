@@ -74,22 +74,4 @@ class Lista {
 };
 
 
-/*class Lista{
-    private:
-        template <class data[]>
-        vector<int> data;
-        //template <class Data>;
-
-        int size;
-    public:
-        Lista();
-        void insert(int);
-        void removeLast(int);
-        int getData(int);
-        int getSize();
-        int getMax();
-        void print();
-
-};*/
-
 #endif
