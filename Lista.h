@@ -29,7 +29,7 @@ class Lista {
                 cout << "NO HOY ELEMENTOS";
             }
             else{
-                //cout << data[size-1] << endl;
+                cout << "Valor eliminado: " << data[size-1] << endl << endl;;
                 data.erase(data.begin()+ size-1);
                 size = size - 1;
             }
@@ -72,6 +72,5 @@ class Lista {
             cout << "Hello world" << endl;
         }
 };
-
 
 #endif
