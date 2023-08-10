@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// El trabajar con un template se debe 
 template <typename T>
 class Lista {
     private:
