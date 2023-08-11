@@ -21,7 +21,6 @@ class Lista {
         int getSize();
         T getMax();
         void print();
-        void printHello();
 };
 
 template <typename T>
@@ -42,24 +41,24 @@ void Lista<T>::insert(T a){
 
 template <typename T>
 void Lista<T>::removeLast(){
-    if (data.size() == 0){
-        cout << "NO HOY ELEMENTOS";
+    if (size > 0){
+        cout << "Valor eliminado: " << data[size-1] << endl << endl;;
+        //data.erase(data.begin()+ size-1);
+        data.pop_back(); // Elimina el último elemento
+        size = size - 1;
     }
     else{
-        cout << "Valor eliminado: " << data[size-1] << endl << endl;;
-        data.erase(data.begin()+ size-1);
-        size = size - 1;
+        throw out_of_range("NO HOY ELEMENTOS");
     }
 }
 
 template <typename T>
-T Lista<T>::getData(int p){
-    if (0 <= p-1 < size){
-        return data[p-1];
+T Lista<T>::getData(int index){
+    if (index >= 0 &&  index < size){
+        return data[index];
     }
     else{
-        cout <<"NO EXISTE ESE ELEMENTO";
-        //return data[1];
+        throw out_of_range("Posición invlálida");
     }
 }
 
@@ -70,37 +69,26 @@ int Lista<T>::getSize(){
 
 template <typename T>
 T Lista<T>::getMax(){
-    //int pos = 0;
-    T max = data[0];
-
-    for (int i = 1; i < size; i++){
-        if (max <= data[i]){
-            max = data[i];                    
+    if (size > 0){
+        T max = data[0];
+        for (int i = 1; i < size; i++){
+            if (max <= data[i]){
+                max = data[i];                    
+            }
         }
+        return max;
     }
-    return max;
+    else {
+        throw out_of_range("La lista está vacía");
+    }
 }
 
 template <typename T>
-void Lista<T>::print(){
-            
-    //Forma 1
+void Lista<T>::print(){         
     for (int i = 0;i < size;i++){
         cout <<"["<<i<<"]"<< " - " << data[i] << endl;
     }
     cout << endl;
-
-    //Forma 2
-    // for(auto el:data){
-    //     cout << el << endl;
-    //     //cout <<"["<<i<<"]"<< " - " << data[i] << endl;
-    // }
 }
-
-template <typename T>
-void Lista<T>::printHello(){
-            cout << "Hello world" << endl;
-}
-
 
 #endif
