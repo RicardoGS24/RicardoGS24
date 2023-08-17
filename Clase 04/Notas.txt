@@ -1,0 +1,59 @@
+Análisis de Algoritmos (BigO Notation)
+
+- Tiempo de ejecución
+- Cantidad de espacio usado
+
+Notación Asintónica - BigO
+- Complejidad temporal
+- Complejidad temporal asintónica: Evalúa el algoritmo en caso de que las datos tienden a infinito.
+
+Este método sirve para medir de forma estimada la eficacia del código.
+Se considera de forma aproximada la eficencia del código considerando en el peor de los casos.
+
+Big-O Complexiti Chart:
+1. 1
+2. log2(n)
+3. n
+4. n log2 n
+5. n^2 
+6 n^2 log2(n)
+7 n^3
+8 2^n
+9 n!
+
+Reglas de medición Big-O:
+1.- Instrucciones secuenciales:
+        Determinar la eficiencia de cada una de las intrucciones que existen en el código.
+        El ciclo con la menor eficacia será el que determina en el nivel total de eficacia del grupo.
+        Cobra sentido al asumir que los datos tienden a infinito.
+
+2.- Condiciones (If's):
+        En un If el nivel de eficacia se determina por el código que sea más eneficiente.
+        Se considera el nivel de eficacia del If y Else.
+
+3.- Ciclos (for y/o while):
+        Si el rango de repetición depende de n, el orden o complejidad será:
+            - VCC es la variable de control que se modifica hasta llegar a n.
+            - Lineal: cuando a la VCC se le suma o resta un valor constante. El orden de complejidad es O(n)
+            - Logarítmica: cuando a la VCC divide o multiplica por un valor constante.
+
+            O(1): se conoce el número de repeticiones y es por suma
+            O(n): no se conoce un valor y es suma o resta
+            Olog(n): no se conoce un valor y es multiplicación o división
+    
+    - Ciclos anidados:
+        Se multiplican los órdenes y el orden es de adentro a afuera
+
+4.- Recursividad:
+        - O(n): cuando se tiene un sola llamada recursiva en ejecución y se parámatero de control 
+        se disminuye o incrementa en un valor constante.
+        - O(logb(n)): cuando se tiene una sola llamada recursiva en ejecución y su parámetro de control
+        se divide o se multiplica por un valor "b" constante.
+        - O(c^n): cuando se tiene "c" llamadas recursivas en ejecución y su parámetro de control 
+        se incrementa o decrementa en una costante
+        - O(n^logb(c)): 
+
+
+Planteamiento de fórmulas de recurrencia:
+
+
