@@ -1,0 +1,10 @@
+ALGORITMOS DE BÚSQUEDA
+
+1.- Secuencial: Busca la clave explorando un elemento después de otro.
+    - Eficiencia del Orden de O(n)
+
+2.- Binaria: En listas ORDENADAS por la clave de Búsqueda, es el mejor método.
+    - Se sitúa la lectura al centro de la lista y se le comprueba contra la clave.
+    - Eficiencia del Orden O(log2n)
+    - Es un algoritmo muy eficiente para encontrar un elemento en una lista ordenada.
+
