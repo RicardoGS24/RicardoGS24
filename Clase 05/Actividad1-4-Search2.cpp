@@ -2,65 +2,108 @@
 #include <vector>
 using namespace std;
 
-// int binarySearch(vector<string> list, int data){
-//     // Inicializar left y right
-//     int left = 0;
-//     int right = list.size() - 1;
+void binarySearch(const string& list,char valorUnico,int& Comparisons){
+    // Inicializar left y right
+    int left = 0, right = list.size()-1, tipoResiduo = 0;
 
-//     while(left <= right){
-//         //Calcular el valor de en medio
-//         int mid = left + (right - left)/2;
-//         //Camparamos el valor buscadoo con el valor de la lista en el indice mid
-//         if (list[mid] == data){
-//             // Ya lo encontramos
-//             return mid;
-//         }
-//         else { // No son iguales
-//             if (data < list[mid]){ //Data se encuentra de lado izquierdo
-//                 right = mid - 1;
-//             }
-//             else if (data > list[mid]){ //Data se encuentra de lado derecho
-//                 left = mid + 1;
-//             }
-//         }
-//     }
-//     //throw out_of_range("No sé encontró el valor buscado");
-//     return -1;
-// }
+    while(left <= right){
+        Comparisons++;
+        //Calcular el valor de en medio
+        int mid = left + (right - left)/2;
+        tipoResiduo = list.size() - (mid+1);
 
-int secuencialSearch(vector<string>list){
-    int contador = 0;
-    for(int i = 0; i < list.size(); i++){ //Iterar para obtener cada elemento del vector
-        for(int k=0; i<list[i].size();k++){  //Iterar para obtener cada caracter del string
-            contador++;
-            if(list[i][k] == list[i][k+1]){
-                //contador++;
-                k++;
+        if (list[mid] == valorUnico){
+            cout << list[mid] << " " << Comparisons << endl;
+            return;
+        }
+        else if (tipoResiduo%2 != 0){
+            if(list[mid] == list[mid-1]){
+                left = mid+1;
             }
             else {
-                return contador;
+                right = mid-1;
             }
         }
+        else {
+            if (list[mid] == list[mid-1]){
+                right = mid - 2;
+            }
+            else {
+                left = mid + 2;
+            }
+        }
+
+        if (right-left <= 1 && list.size() == 3){
+            if (list[mid] == list[mid-1]){
+                cout << list[mid+1] << " " << Comparisons << endl;
+            }
+            else {
+                cout << list[mid-1] << " " << Comparisons << endl;
+            }
+            left = right + 1;
+        }
     }
-    return 0;
+
 }
 
 
+void secuencialSearch(string list, int& comparisons){
+    for(int k=0; k < list.size()-1;k++){  //Iterar para obtener cada caracter del string
+        comparisons++;
+        if(list[k] == list[k+1]){
+            k++;
+        }
+        else {
+            cout << list[k] << " " << comparisons;
+            return;
+        }
+    }
+    cout << list[list.size()-1] << " " << comparisons;
+}
+
 int main()
 {
-    vector<string> list;
+    vector<string> list = {};
     int n = 0;
     string x = "";
+    cout << "Ingrese n: ";
     cin >> n;
 
-    for (int i=0;i<n;i++){
+    for(int i=0;i<n;i++){
+        cout << "Teclee el valor: ";
         cin >> x;
         list.push_back(x);
     }
 
-    int sS = secuencialSearch(list);
+    for(const string& str : list){
+        char uniqueChar;
+        int secuencialComparisons = 0, binaryComparisons = 0;
 
-    cout << list[0][(sS*2) -2] << " " << sS << endl;
+        // Encontrar el valor único   
+        for (int i = 0; i < str.size(); i += 2) {
+            if (i == str.size() - 1 || str[i] != str[i + 1]) {
+                uniqueChar = str[i];
+                break;
+            }
+        }
+
+        secuencialSearch(str, secuencialComparisons);
+        cout << " ";
+        binarySearch(str, uniqueChar, binaryComparisons);
+
+    }
 
     return 0;
 }
+
+
+// Ejecución del Programa:
+// Ingrese n: 4
+// Teclee el valor: AACCZZTTVXX
+// Teclee el valor: AAB
+// Teclee el valor: CCAAXWWTT
+// Teclee el valor: XXYYZZAAC
+// V 5 V 2
+// B 1 B 1
+// X 3 X 1
+// C 4 C 3
