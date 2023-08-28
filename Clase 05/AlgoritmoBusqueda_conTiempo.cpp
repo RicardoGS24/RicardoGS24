@@ -73,9 +73,9 @@ int main() {
     chrono::high_resolution_clock::time_point begin;
     chrono::high_resolution_clock::time_point end;
 
-    // Crear una lista de 1000000 de enteros
+    // Crear una lista de 10000 de enteros
     vector<int> list;
-    createListInt(list, 1000000);
+    createListInt(list, 10000);
     sort(list.begin(),list.end()); //Sorting el vector
 
     int index;
