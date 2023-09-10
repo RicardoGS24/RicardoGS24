@@ -1,9 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <chrono>
+#include <string>
 using namespace std;
 
-// Obtiene el tiempo inicial para calcular el tiempo transcurrido por un algoritmo
 void startTime(chrono::high_resolution_clock::time_point &begin)
 {
   // start time
@@ -11,7 +11,6 @@ void startTime(chrono::high_resolution_clock::time_point &begin)
   
 }
 
-// Imprime el tiempo transcurrido desde el valor de start hasta el momento que se ejecuta la función
 void getTime(chrono::high_resolution_clock::time_point begin, chrono::high_resolution_clock::time_point end) 
 {
     end = std::chrono::high_resolution_clock::now();
@@ -20,7 +19,23 @@ void getTime(chrono::high_resolution_clock::time_point begin, chrono::high_resol
     printf("Tiempo de ejecución: %.8f seconds.\n", elapsed.count() * 1e-9);
 }
 
-// Crea una lista aleatoria de enteros
+template<class T>
+void print(vector<T> list) {
+    for (auto l : list) {
+        cout << l << " ";
+    }
+    cout << endl;
+}
+
+template<class T>
+void swap(vector<T> &list, int a, int b) {
+    if (a != b) {
+        T aux = list[a];
+        list[a] = list[b];
+        list[b] = aux;
+    }
+}
+
 void createListInt(vector<int> &list, int quantity)
 {
   for (int i = 0; i < quantity; i++)
@@ -30,7 +45,74 @@ void createListInt(vector<int> &list, int quantity)
   }
 }
 
-int binarySearch(vector<int> list, int data){
+void createListChar(vector<char> &list,int quantity){
+    for (int i = 0; i < quantity; i++) {
+        int numeroAleatorio = rand() % 26;
+        char letraAleatoria = 'a' + numeroAleatorio;
+        list.push_back(letraAleatoria);
+    }
+}
+
+// GENERA UN STRING DE CIERTA LONGITUD
+string generarStringAleatorio(int longitud) {
+    string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    string resultado;
+    for (int i = 0; i < longitud; i++) {
+        int indiceAleatorio = rand() % caracteres.length();
+        resultado += caracteres[indiceAleatorio];
+    }
+    return resultado;
+}
+
+void createListString(vector<string> &list,int quantity,int longitud){
+    for (int i = 0; i < quantity; i++) {
+        string nuevoString = generarStringAleatorio(longitud);
+        list.push_back(nuevoString);
+    }
+}
+
+template<class T>
+int getPivot(vector<T> &list, int left, int right) {
+    // Definimos el pivote
+    int pivot = right;
+
+    // Creamos un indice aux en left - 1
+    int auxIndex = left-1;
+
+    // Iteramos la lista desde left hasta right -1
+    for(int index=left;index < right;index++){
+        // COmparamos el valor de index con el valor del pivot
+        if (list[index] < list[pivot]){
+            // Incrementamos el índice auxiliar
+            auxIndex++;
+            // Intercambiamos el indice auxiliar con index
+            swap(list, index, auxIndex);
+
+        }
+    }
+
+    // Incrementamos el índice auxiliar
+    auxIndex++;
+    // Intercambiamos el indice auxiliar con el pivot
+    swap(list, pivot, auxIndex);    
+    // Regresamoe el indice auxliar
+    return auxIndex;
+}
+
+template<class T>
+void quickSort(vector<T> &list, int left, int right) {
+    if (left < right) {
+        // Obtenemos la posición final del privote
+        int pivot = getPivot(list, left, right);
+        // Ordenamos la lista del lado izquierdo
+        quickSort(list, left, pivot-1);
+        // Ordenamos la lista del lado derecho
+        quickSort(list, pivot+1, right);
+    }
+}
+
+template<class T>
+void binarySearch(vector<T> list, T data){
     // Inicializar left y right
     int left = 0;
     int right = list.size() - 1;
@@ -41,7 +123,8 @@ int binarySearch(vector<int> list, int data){
         //Camparamos el valor buscadoo con el valor de la lista en el indice mid
         if (list[mid] == data){
             // Ya lo encontramos
-            return mid;
+            cout << "El valor buscado tiene el índice: " << mid << endl;
+            return;
         }
         else { // No son iguales
             if (data < list[mid]){ //Data se encuentra de lado izquierdo
@@ -52,19 +135,27 @@ int binarySearch(vector<int> list, int data){
             }
         }
     }
-    //throw out_of_range("No sé encontró el valor buscado");
-    return -1;
+    cout << ("No sé encontró el valor buscado") << endl;
 }
 
-int secuencialSearch(vector<int>list,int data){
-    for(int i = 0; i < list.size(); i++){
+template<class T>
+void secuencialSearch(vector<T>list,T data){
+    int cont=0;
+    for(int i=0; i < list.size(); i++){
         if(data == list[i]){
-            return i;
+            cout << "El valor buscado tiene el índice: " << i << endl;
+            return;
         }
+        cont++;
     }
-    return -1;
+    
+    if(cont >= list.size()){
+        cout << "No sé encontró el valor buscado" << endl;
+    }
 }
 
+
+template<class T>
 int main() {
 
     // Semilla para generar números aleatorios
@@ -74,25 +165,30 @@ int main() {
     chrono::high_resolution_clock::time_point end;
 
     // Crear una lista de 10000 de enteros
-    vector<int> list;
-    createListInt(list, 10000);
-    sort(list.begin(),list.end()); //Sorting el vector
+    // vector<int> list;
+    // createListInt(list, 10);
 
-    int index;
+    // vector<char> list;
+    // createListChar(list,10);
+
+    // NOTA:
+    // Cambiar la funciones para crear los vectores para que 
+    // cree elementos que no se repitan y los string sean todos en minúscula
+
+    vector<string> list;
+    createListString(list,10,5);
+    quickSort(list, 0, list.size()-1);
+    
+    print(list);
+    T index;
+
     cout << "Ingresa el entero a buscar: ";
     cin >> index;
 
-    while (index != 0){
+    while (index != "0"){
 
-        cout << "Tiempo de búsqueda binaria: ";
-        startTime(begin);
-        cout << binarySearch(list,index) << endl;
-        getTime(begin, end);
-        
-        cout << "Tiempo de búsqueda secuencial: ";
-        startTime(begin);
-        cout << secuencialSearch(list,index) << endl;
-        getTime(begin, end);
+        binarySearch(list,index);        
+        secuencialSearch(list,index);
         
         cout << "Ingresa el entero a buscar: ";
         cin >> index;

@@ -84,17 +84,25 @@ void createListString(vector<string> &list,int quantity,int longitud){
 
 
 // BÚSQUEDA SECUENCIAL
-int secuencialSearch(vector<int>list,int data){
-    for(int i = 0; i < list.size(); i++){
+template<class T>
+void secuencialSearch(vector<T>list,T data){
+    int cont=0;
+    for(int i=0; i < list.size(); i++){
         if(data == list[i]){
-            return i;
+            cout << "El valor buscado tiene el índice: " << i << endl;
+            return;
         }
+        cont++;
     }
-    return -1;
+    
+    if(cont >= list.size()){
+        cout << "No sé encontró el valor buscado" << endl;
+    }
 }
 
 // BÚSQUEDA BINARIA
-int binarySearch(vector<int> list, int data){
+template<class T>
+void binarySearch(vector<T> list, T data){
     // Inicializar left y right
     int left = 0;
     int right = list.size() - 1;
@@ -105,7 +113,8 @@ int binarySearch(vector<int> list, int data){
         //Camparamos el valor buscadoo con el valor de la lista en el indice mid
         if (list[mid] == data){
             // Ya lo encontramos
-            return mid;
+            cout << "El valor buscado tiene el índice: " << mid << endl;
+            return;
         }
         else { // No son iguales
             if (data < list[mid]){ //Data se encuentra de lado izquierdo
@@ -116,9 +125,9 @@ int binarySearch(vector<int> list, int data){
             }
         }
     }
-    //throw out_of_range("No sé encontró el valor buscado");
-    return -1;
+    cout << ("No sé encontró el valor buscado") << endl;
 }
+
 
 // MÉTODO DE INTERCAMBIO
 template<class T>
@@ -364,44 +373,48 @@ void menuAlgoritmosBusqueda(vector<T> &list){
     chrono::high_resolution_clock::time_point end;
 
     int opcion = 0;
+    T index;
+
     // Imprimir una lista
     cout << "ALGORITMOS DE BÚSQUEDA" << endl;
-    cout << "Lista de valores aleatorios: " << endl;
+    cout << "Lista de valores: " << endl;
+
+    // Ordenar la lista
+    quickSort(list, 0, list.size()-1);
     print(list);
     cout << endl;
 
     while (opcion != 3){
-        int comparisons = 0;
-        int swaps = 0;
 
         cout << "1) Búsqueda sequencial" << endl;
         cout << "2) Búsqueda binaria" << endl;
         cout << "3) Salir" << endl;
         cout << "Ingresa el número de la opción: " ;
         cin >> opcion;
+        cout << endl;
 
         // Búsqueda sequencial
-        if (opcion == 1){             
+        if (opcion == 1){   
+            cout << "Ingresa el elemento a buscar: ";
+            cin >> index;   
+
             startTime(begin);
-            swapSort(list, comparisons, swaps);
-            cout << endl;
+            secuencialSearch(list,index);
             getTime(begin, end);
-            cout << "Ordenamiento por Intercambio" << endl;
-            print(list);
-            cout << "Comparaciones: " << comparisons << " - intercambios: " << swaps << endl;
+            cout << endl;
         }   // Búsqueda binaria
         else if(opcion == 2){
+            cout << "Ingresa el elemento a buscar: ";
+            cin >> index; 
+
             startTime(begin);
-            bubbleSort(list, comparisons, swaps);
-            cout << endl;
+            binarySearch(list,index);        
             getTime(begin, end);
-            cout << "Ordenamiento por Burbuja" << endl;
-            print(list);
-            cout << "Comparaciones: " << comparisons << " - intercambios: " << swaps << endl;
-        }        
+            cout << endl;
+        }
+        //opcion = 3;
     }   
 }
-
 
 //MENÚ DEL ALGORITMOS DE ORDENAMIENTOS
 template<class T>
@@ -441,6 +454,7 @@ void menuAlgoritmosOrdenamiento(vector<T> &list){
             cout << "Ordenamiento por Intercambio" << endl;
             print(list);
             cout << "Comparaciones: " << comparisons << " - intercambios: " << swaps << endl;
+            return;
         }   // Método de Burbuja
         else if(opcion == 2){
             startTime(begin);
@@ -450,6 +464,7 @@ void menuAlgoritmosOrdenamiento(vector<T> &list){
             cout << "Ordenamiento por Burbuja" << endl;
             print(list);
             cout << "Comparaciones: " << comparisons << " - intercambios: " << swaps << endl;
+            return;
         }   // Método de Selección
         else if(opcion == 3){
             startTime(begin);
@@ -459,6 +474,7 @@ void menuAlgoritmosOrdenamiento(vector<T> &list){
             cout << "Ordenamiento por Selección" << endl;
             print(list);
             cout << "Comparaciones: " << comparisons << " - intercambios: " << swaps << endl;
+            return;
         }   // Método de Inserción
         else if(opcion == 4){
             startTime(begin);
@@ -468,6 +484,7 @@ void menuAlgoritmosOrdenamiento(vector<T> &list){
             cout << "Ordenamiento por Inserción" << endl;
             print(list);
             cout << "Comparaciones: " << comparisons << " - intercambios: " << swaps << endl;
+            return;
         }   // Método de Mezcle
         else if(opcion == 5){
             startTime(begin);
@@ -476,6 +493,7 @@ void menuAlgoritmosOrdenamiento(vector<T> &list){
             getTime(begin, end);
             cout << "Ordenamiento por Mezcla" << endl;
             print(list);
+            return;
         }   // Método de ordenamiento rápido
         else if(opcion == 6){
             startTime(begin);
@@ -484,6 +502,7 @@ void menuAlgoritmosOrdenamiento(vector<T> &list){
             getTime(begin, end);
             cout << "Ordenamiento Rápido" << endl;
             print(list);
+            return;
         }   // Método de Shell Sort
         else if(opcion == 7){
             int n = list.size()-1;
@@ -493,11 +512,11 @@ void menuAlgoritmosOrdenamiento(vector<T> &list){
             getTime(begin, end);
             cout << "Ordenamiento Shell Sort" << endl;
             print(list);
+            return;
         }
-        opcion = 8;
+        //opcion = 8;
     }
 }
-
 
 // MENÚ DEL TIPO DE ALGORITMO
 template<class T>
@@ -516,15 +535,16 @@ void menuAlgoritmo(vector<T> &list){
         if (opcion == 1){            
             // AGREGAR EL MENÚ
             menuAlgoritmosOrdenamiento(list);
+            return;
         } 
         // Algoritmos de búsqueda 
         else if(opcion == 2){
             // AGREGAR EL MENÚ
             menuAlgoritmosBusqueda(list);
+            return;
         }
     }
 }
-
 
 // MENÚ PRINCIPAL
 void start(){
@@ -567,7 +587,7 @@ void start(){
             cout << "VECTOR STRING" << endl;
             cout <<"Ingresa el numero de elementos en el vector: ";
             cin >> n;
-            cout <<"Ingresa la longitud del string: ";
+            cout <<"Ingresa la longitud de cada string: ";
             cin >> l;
             cout << endl;
             createListString(list,n,l);
@@ -582,81 +602,6 @@ int main() {
     srand(time(0));
     
     start();
-
-    // vector<char> list;
-    // createListChar(list,10);
-    // vector<char> listAux;
-    
-    // print(list);
-    // int comparisons = 0;
-    // int swaps = 0;
-
-    // listAux = list;
-    // startTime(begin);
-    // swapSort(listAux, comparisons, swaps);
-    // cout << endl;
-    // getTime(begin, end);
-    // cout << "Ordenamiento por Intercambio" << endl;
-    // print(listAux);
-    // cout << "Comparaciones: " << comparisons << " - intercambios: " << swaps << endl;
-    
-    // listAux = list;
-    // comparisons= 0;
-    // swaps = 0;
-    // startTime(begin);
-    // bubbleSort(listAux, comparisons, swaps);
-    // cout << endl;
-    // getTime(begin, end);
-    // cout << "Ordenamiento por Burbuja" << endl;
-    // print(listAux);
-    // cout << "Comparaciones: " << comparisons << " - intercambios: " << swaps << endl;
-    
-    // listAux = list;
-    // comparisons= 0;
-    // swaps = 0;
-    // startTime(begin);
-    // selectionSort(listAux, comparisons, swaps);
-    // cout << endl;
-    // getTime(begin, end);
-    // cout << "Ordenamiento por Selección" << endl;
-    // print(listAux);
-    // cout << "Comparaciones: " << comparisons << " - intercambios: " << swaps << endl;
-    
-    // listAux = list;
-    // comparisons= 0;
-    // swaps = 0;
-    // startTime(begin);
-    // insertionSort(listAux, comparisons, swaps);
-    // cout << endl;
-    // getTime(begin, end);
-    // cout << "Ordenamiento por Inserción" << endl;
-    // print(listAux);
-    // cout << "Comparaciones: " << comparisons << " - intercambios: " << swaps << endl;
-    
-    // listAux = list;
-    // startTime(begin);
-    // mergeSort(listAux, 0, listAux.size()-1);
-    // cout << endl;
-    // getTime(begin, end);
-    // cout << "Ordenamiento por Mezcla" << endl;
-    // print(listAux);
-
-    // listAux = list;
-    // startTime(begin);
-    // quickSort(listAux, 0, listAux.size()-1);
-    // cout << endl;
-    // getTime(begin, end);
-    // cout << "Ordenamiento Rápido" << endl;
-    // print(listAux);    
-
-    // listAux = list;
-    // int n = listAux.size()-1;
-    // startTime(begin);
-    // shell(listAux,n);
-    // cout << endl;
-    // getTime(begin, end);
-    // cout << "Ordenamiento Shell Sort" << endl;
-    // print(listAux);
 
     return 0;
 }
