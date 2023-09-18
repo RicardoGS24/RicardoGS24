@@ -1,0 +1,13 @@
+ELEMENTOS DE UNA COMPUTADORA:
+- Procesador
+- Memoria
+- Cache o memoria virtual
+
+// APUNTADOR
+Declaración en C++:
+tipo *nombre_apuntador;
+
+Ejemplos:
+int *p;
+int* p;
+char c, *s;
