@@ -11,3 +11,23 @@ Ejemplos:
 int *p;
 int* p;
 char c, *s;
+
+Operador de dirección:
+&variable
+
+Tipos de memoria;
+- Estática: el espacio de memoria que se le asocia a una variable y que pertenece durante el tiempo de vida del objeto
+- Dinámica: es una variable que hace referencia al
+    new: para crear espacio de memoria  
+    delete: borrar espacio de Memoria
+
+* Por cada vez que se haya ejecutado un NEW, deberá ejecutarse un DELETE antes terminar la ejecución de una programa.
+
+LISTA ENCADENADAS:
+Es una estructura de datos que tiene una organización lineal y se caracteriza porque cada uno de sus elementos tiene que 
+que indicar donde se encuentra el siguiente elemento de la lista-
+- Una posible desventaja es que cada nodo tiene que guardar una información extra, la dirección del siguiente nodo.
+
+Cada nodo en una lista encadenada contiene un campo llamado NEXT.
+El campo NEXT del último nodo contiene NULL.
+
