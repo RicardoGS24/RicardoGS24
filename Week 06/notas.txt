@@ -31,3 +31,55 @@ que indicar donde se encuentra el siguiente elemento de la lista-
 Cada nodo en una lista encadenada contiene un campo llamado NEXT.
 El campo NEXT del último nodo contiene NULL.
 
+// DOBLE LinkedList
+Una lista Double Linked List es una lista enlazada con el elemento siguiente y el elemento previo
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+// EVIDENCE 2
+- Leer datos en el Archivo y almacena los datos en una DoubleLynkedList
+- Generar menú:
+    1.- Ordernar por fecha y hora (Quick Sort o MergeSort)
+    2.- Ordenar por IP, fecha y hora
+    3.- Búsqueda por rango de IP con algoritmo de búsqueda binaria:
+        - Pide el rango de IPs
+        - Busca todos los datos IPs en el rango
+        - Guarda los registros en un DoubleLynkedList
+        - Genera un Archivo donde se registran de forma ascendente
+        - Genera un Archivo donde se registran de forma descendente
+    4.- Sumatoria de datos
+        - La cantididad de IP por cada año y mes (Se hará secuencialmente / con acumuladores)
+    5.- Salir
+
+--------------------------------------------------------------------------------------------------------------------------
+
+// PILAS 
+
+Estructura de datos lineal
+El orden de entrada sigue la filosofía: LIFO (Last Input First Output)
+- Poder saber cual es el último elemento
+- Se quiere solo sacar datos y meter datos
+
+Operaciones:
+push_       agregar un elemento
+Pop_        eliminar un elemento
+Top_        saber cual es elemento arriba 
+isEmpty_    saber si está vacía
+IsFull_     saber si está llena
+
+// FILAS
+
+Estructura de datos linael
+El orden de entrada sigue la filosofía: FIFO (First Input First Output)
+- Si algo entra es el que estará esta atrás
+- Si algo sale será el primero
+
+Operaciones:
+push_       agregar un elemento
+Pop_        eliminar un elemento
+front_        saber cual es elemento arriba 
+isEmpty_    saber si está vacía
+IsFull_     saber si está llena
+
+
