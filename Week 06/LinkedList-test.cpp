@@ -244,39 +244,40 @@ void menuOperaciones(LinkedList<T> &list){
             // Sobrecarga del operador []
             list[index] = data;
             cout << endl;
-        } else if (option == 12){
-            int oS = 0;
-            LinkedList<int> listInt2;
-            LinkedList<string> listString2;
+        } // else if (option == 12){ ------------------------------------- ARREGLAR
+        //     int oS = 0;
+        //     LinkedList<int> listInt2;
+        //     LinkedList<string> listString2;
             
-            cout << "Igualar una lista con los datos de otra" << endl;
-            cout << "Elige el tipo de la nueva lista" << endl;
-            cout << "1) INT" << endl;
-            cout << "2) STRING"<< endl; 
-            cout << "Ingresa la opcion: "; cin >> oS; cout << endl;
+        //     cout << "Igualar una lista con los datos de otra" << endl;
+        //     cout << "Elige el tipo de la nueva lista" << endl;
+        //     cout << "1) INT" << endl;
+        //     cout << "2) STRING"<< endl; 
+        //     cout << "Ingresa la opcion: "; cin >> oS; cout << endl;
 
-            if (oS == 1 && list){
-                listInt2 = capturarDatosListInt();
-                cout << "La lista original es: ";
-                list.print(); cout << endl;
-                cout << "La segundo lista es: ";
-                listInt2.print(); cout << endl;
-                // Sobrecarga del operador =
-                list = listInt2;   
-            } else if (oS == 2){
-                listString2 = capturarDatosListString();
-                cout << "La lista original es: ";
-                list.print(); cout << endl;
-                cout << "La segundo lista es: ";
-                listString2.print(); cout << endl;
-                // Sobrecarga del operador =
-                list = listString2;   
-            }
+        //     if (oS == 1 && list){
+        //         listInt2 = capturarDatosListInt();
+        //         cout << "La lista original es: ";
+        //         list.print(); cout << endl;
+        //         cout << "La segundo lista es: ";
+        //         listInt2.print(); cout << endl;
+        //         // Sobrecarga del operador =
+        //         list = listInt2;   
+        //     } else if (oS == 2){
+        //         listString2 = capturarDatosListString();
+        //         cout << "La lista original es: ";
+        //         list.print(); cout << endl;
+        //         cout << "La segundo lista es: ";
+        //         listString2.print(); cout << endl;
+        //         // Sobrecarga del operador =
+        //         list = listString2;   
+        //     }
 
-            cout << "La nueva lista es: ";
-            list.print(); cout << endl;
+        //     cout << "La nueva lista es: ";
+        //     list.print(); cout << endl;
 
-        } else if (option == 13){
+        // } 
+        else if (option == 13){
             cout << "La lista es: ";
             list.print(); cout << endl << endl;
         }
