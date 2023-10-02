@@ -206,14 +206,15 @@ void menuOperaciones(LinkedList<T> &list){
             cout << "Obtener un elemento de la lista por su indice" << endl;
             cout << "Ingresa el indice: "; cin >> index;
             cout << "El elemento es: " << list.getData(index) << endl << endl;
-        } else if (option == 7){ // ------------------ ARREGLAR ----------------
-            T data1; 
-            T data2;
+        } else if (option == 7){
+            T d1;
+            T d2;
             cout << "Actualizar un elemento dado de la lista" << endl;
-            cout << "Ingresa el elemento existente: "; cin >> data1;
-            cout << "Ingresa el nuevo elemento: "; cin >> data1;
+            cout << "Ingresa el elemento existente: "; cin >> d1;
+            cout << "Ingresa el nuevo elemento: "; 
+            cin >> d2; cout << endl;
             try {
-                list.updateData(data1,data2);
+                list.updateData(d1,d2);
             } catch(out_of_range &e)
             {
                 cout << e.what() << endl;
@@ -244,39 +245,31 @@ void menuOperaciones(LinkedList<T> &list){
             // Sobrecarga del operador []
             list[index] = data;
             cout << endl;
-        } // else if (option == 12){ ------------------------------------- ARREGLAR
-        //     int oS = 0;
-        //     LinkedList<int> listInt2;
-        //     LinkedList<string> listString2;
+        } else if (option == 12){
+            int x = 0;
+            T n;
+            LinkedList<T> list2;
+
+            cout << "Igualar una lista con los datos de otra" << endl;
+            cout << "Datos Capturados - Nueva lista" << endl; 
+            cout << "Ingresa la cantidad de elemetos: "; cin >> x;               
             
-        //     cout << "Igualar una lista con los datos de otra" << endl;
-        //     cout << "Elige el tipo de la nueva lista" << endl;
-        //     cout << "1) INT" << endl;
-        //     cout << "2) STRING"<< endl; 
-        //     cout << "Ingresa la opcion: "; cin >> oS; cout << endl;
+            for (int i = 0; i<x ; i++){
+                cout << "Ingresa el elemento " << i << " : ";
+                cin >> n; 
+                list2.addLast(n);
+            }
 
-        //     if (oS == 1 && list){
-        //         listInt2 = capturarDatosListInt();
-        //         cout << "La lista original es: ";
-        //         list.print(); cout << endl;
-        //         cout << "La segundo lista es: ";
-        //         listInt2.print(); cout << endl;
-        //         // Sobrecarga del operador =
-        //         list = listInt2;   
-        //     } else if (oS == 2){
-        //         listString2 = capturarDatosListString();
-        //         cout << "La lista original es: ";
-        //         list.print(); cout << endl;
-        //         cout << "La segundo lista es: ";
-        //         listString2.print(); cout << endl;
-        //         // Sobrecarga del operador =
-        //         list = listString2;   
-        //     }
-
-        //     cout << "La nueva lista es: ";
-        //     list.print(); cout << endl;
-
-        // } 
+            cout << "La lista original es: ";
+            list.print();
+            cout << "La segunda lista es: ";
+            list2.print();
+            // Sobrecarga del operador =
+            list = list2; 
+            cout << "--- list = list2 ---" << endl;
+            cout << "La nueva lista es: ";
+            list.print(); cout << endl;
+        } 
         else if (option == 13){
             cout << "La lista es: ";
             list.print(); cout << endl << endl;
