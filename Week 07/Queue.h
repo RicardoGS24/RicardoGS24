@@ -1,65 +1,84 @@
-#ifndef Queue_h
-#define Queue_h
+#ifndef QUEUE_H
+#define QUEUE_H
+#include <iostream>
+
 #include "Node.h"
 
 template <class T>
 class Queue {
-    private:
-        Node<T>* front;
-        Node<T>* tail;
-    public:
-        Queue();
-        void push(T data); // Agrega un elemento al final de la fila
-        void pop(); // Elimina el primer elemento de la list
-        T Front();  // Regresa el primer elemento de la lista
-        bool isEmpty();
-        void print();
+private:
+    Node<T>* head;
+    Node<T>* tail;
+public:
+    Queue();
+
+    void pop();
+    void push (T data);
+    T front();
+
+    bool isEmpty();
+    void print();
 };
 
 template <class T>
 Queue<T>::Queue(){
-    front = nullptr;
-}
+    head = nullptr;
+    tail = nullptr;
+} 
+
+// ------------------------------------------------
 
 template <class T>
-void Queue<T>::push(T data){
-    if (isEmpty()){
-        tail = nullptr;
-        front = new Node<T>(data,tail);
+void Queue<T>::pop() {
+    if (!isEmpty()) {
+        Node<T>* aux = head;
+        head = head -> next;
+        delete aux;         
     } else {
-        Node<T>* aux = tail;
-        aux->next = new Node<T>(data);
-        tail = aux->next->next;
+        throw out_of_range("No se puede borrar - No hay datos en el Queue");
+    }
+}
+
+template <class T>  
+void Queue<T>::push(T data) {
+    Node<T>* newNode = new Node<T>(data);
+    if (!isEmpty()) {
+        tail -> next = newNode;
+        tail = newNode;
+    } else {
+        head = newNode;
+        tail = newNode;
     }
 }
 
 template <class T>
-void Queue<T>::pop(){
-    return;
+T Queue<T>::front() {
+    if (!isEmpty()) {
+        return head -> data;
+    } else {
+        throw out_of_range("No hay datos en el Queue");
+    }
 }
+
+// ------------------------------------------------
 
 template <class T>
-T Queue<T>::Front(){
-
-}
-
-template  <class T>
-bool Queue<T>::isEmpty(){
-    return front == nullptr;
+bool Queue<T>::isEmpty() {
+    return head == nullptr;
 }
 
 template <class T>
 void Queue<T>::print(){
-    Node<T>* aux = front;
-    while(aux != nullptr){    // Se pone "->" porque al ser un apuntador no se puede trabajar con punto
-        // Imprimimos el valor del nodo
+    Node<T>* aux = head;
+    while (aux != nullptr) {
         cout << aux->data;
-        if (aux->next != nullptr){
+        if (aux->next != nullptr)
+        {
             cout << " -> ";
         }
-        // Asignamos a aux el valor de next de aux
         aux = aux->next;
     }
     cout << endl;
 }
+
 #endif

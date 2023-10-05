@@ -14,8 +14,6 @@ struct Node {
 
 template <class T>
 Node<T>::Node(){
-    // No hay nada, en una estructura no es necesario
-    //cout << "Constructor por default" << endl;
     next = nullptr;
 }
 
