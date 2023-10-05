@@ -335,6 +335,7 @@ void start(){
 
 int main()
 {
+    srand(time(0));
     start();
 
     return 0;

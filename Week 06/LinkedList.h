@@ -23,7 +23,6 @@ class LinkedList {
         void updateAt(int index,T data);
         
         T& operator[](const int& index);
-        void operator=(const T& data);
         void operator=(const LinkedList& newList);
 
         int findData(T data);
