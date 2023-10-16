@@ -74,7 +74,6 @@ void remove(std::vector<T>& v, size_t index){
     v.erase(v.begin() + index);
 }
 
-
 template<class T>
 int getPivot(vector<T> &list, int left, int right){
     int pivot = right;

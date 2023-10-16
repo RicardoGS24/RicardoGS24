@@ -1,0 +1,15 @@
+Arboles 
+
+Terminología:
+- Nodo: cada elemento en un Arbol
+- Nodo raíz: Primer elemento agregado al árbol
+- Nodo padre: se le llama así al nodo predecesor de un elemento
+
+- Nodos hoja: aquel nodo que no tiene hijos
+- Subarbol: todos los elementos descendiente de una lado izquierdo o derecho
+
+REGLAS DE LA FORMACIÓN DE UNA ARBOL BINARIO
+- Cada no del arboll puede tener 0, 1, o 2,
+- Los descendientes izquierdos deben ser menos a el padre
+- Los descendientes derechos deben ser igual o mayor
+
