@@ -1,7 +1,7 @@
 // Jesús Ricardo Guerrero Silvestre
 // A00835912
 // Ingenería en Robótica y Sistemas Digitales
-// Fecha: 10 de Septiembre de 2023
+// Fecha: 07 de Octubre de 2023
 
 #include <iostream>
 using namespace std;

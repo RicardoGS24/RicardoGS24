@@ -3,49 +3,94 @@ using namespace std;
 
 #include "BST.h"
 
-int main(){
-    
+void start(){
     // Definir el arbol de busqueda binaria
     BST<int> tree;
+    int option = 0;
 
-    // Prueba de metodo INSERT
-    tree.insert(21);
-    tree.insert(13);
-    tree.insert(33);
-    tree.insert(10);
-    tree.insert(18);
-    tree.insert(25);
-    tree.insert(40);
+    while (option != 9){
+        int x = 0;
 
-    // Prueba de metodo DELETE
-    //tree.remove(10);
-    //tree.remove(40);
-    //tree.remove(13);
+        cout << "----------- MENU PRINCIPAL - BST INT -----------" << endl;
+        cout << "1) Insert" << endl;
+        cout << "2) Delete" << endl;
+        cout << "3) Print" << endl;
+        cout << "4) Find" << endl;
+        cout << "5) Visit" << endl;
+        cout << "6) Height" << endl;
+        cout << "7) Ancestors" << endl;
+        cout << "8) whatLevelAmI" << endl;
+        cout << "9) Salir" << endl;
+        cout << "Ingresa la opcion: "; cin >> option;
+        cout << endl;
 
+        while (option < 1 || option > 9){
+            cout << endl << "----------- RESPUESTA NO VALIDA  -----------" << endl;
+            cout << "-------------- MENU PRINCIPAL --------------" << endl;
+            cout << "1) Insert" << endl;
+            cout << "2) Delete" << endl;
+            cout << "3) Print" << endl;
+            cout << "4) Find" << endl;
+            cout << "5) Visit" << endl;
+            cout << "6) Height" << endl;
+            cout << "7) Ancestors" << endl;
+            cout << "8) whatLevelAmI" << endl;
+            cout << "9) Salir" << endl;
+            cout << "Ingresa la opcion: "; cin >> option;
+            cout << endl;
+        }
 
-    // Prueba de metodo PRINT
-    tree.print();
-    cout << endl;
+        if (option == 1){
+            cout << "Inserta un dato nuevo en el BST." << endl;
+            cout << "Ingresa el valor: "; cin >> x;
+            cout << "El BST anterior:";
+            tree.print();
+            tree.insert(x);
+            cout << "El BST actual:";
+            tree.print();
+        } else if (option == 2){
+            cout << "Elimina un dato del BST." << endl;
+            cout << "Ingresa el valor: "; cin >> x;
+            cout << "El BST anterior:";
+            tree.print();
+            tree.remove(x);
+            cout << "El BST actual:";
+            tree.print();            
+        } else if (option == 3){
+            cout << "Imprime todos los nodos del BST." << endl;
+            cout << "La BST actual es:";
+            tree.print();
+        } else if (option == 4){
+            cout << "Encontrar un dato en el BST." << endl;
+            cout << "Ingresa el valor: "; cin >> x;
+            cout << "Se encuentra el " << x << "?  ";
+            tree.find(x) ? cout << "Si" << endl << endl : cout << "No" << endl << endl;
+        } else if (option == 5){
+            cout << "Desplejar cada uno de los datos en el BST" << endl;
+            cout << "1. Preorder" << endl;
+            cout << "2. Inorder" << endl;
+            cout << "3. Postorder" << endl;
+            cout << "4. Level by level" << endl;
+            cout << "Ingresa la opcion: "; cin >> x;
+            tree.visit(x); cout << endl << endl;
+        } else if (option == 6){
+            cout << "Regresar la altura del BST." << endl;
+            cout << "La altura es: " << tree.getHeight() << endl << endl;
+        } else if (option == 7){
+            cout << "Desplegar los ancestros del BST." << endl;
+            cout << "Ingresa el dato: "; cin >> x;
+            tree.ancestors(x); cout << endl << endl;
+        } else if (option == 8){
+            cout << "Nivel en el que se encuentra un dato." << endl;
+            cout << "Ingresa el dato: "; cin >> x;
+            cout << "El nivel es: " << tree.whatLevelAmI(x) << endl << endl;
+        }
+    }
+}
 
-    // Prueba de metodo FIND
-    //tree.find(25) ? cout << "Si" << endl : cout << "No" << endl;
-    //cout << "El valor se encuantra (1-TRUE , 0-FALSE): " << tree.find(19) << endl;
+int main(){
 
-    // Prueba de metodo VISIT
-    // for (int i= 1; i<5;i++){
-    //     tree.visit(i);
-    //     cout << endl;
-    // }
-
-    // Prueba de metodo HEIGHT
-    // cout << tree.getHeight() << endl;
-
-    // Prueba de metodo ANCESTORS
-    //tree.ancestors(23);
-    //tree.ancestors(40);
-
-    // Prueba de metodo WHAT_LEVEL_AM_I
-    //cout << tree.whatLevelAmI(24) << endl;
+    start();
 
     return 0;
 }
