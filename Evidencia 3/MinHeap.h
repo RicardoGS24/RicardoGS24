@@ -2,6 +2,7 @@
 #define MinHeap_h
 
 #include <vector>
+#include "Log.h"
 
 template <class T>
 class MinHeap {

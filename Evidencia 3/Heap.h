@@ -2,6 +2,7 @@
 #define Heap_h
 
 #include <vector>
+#include "Log.h"
 
 template <class T>
 class Heap {
