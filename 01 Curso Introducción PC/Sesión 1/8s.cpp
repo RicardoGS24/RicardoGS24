@@ -15,6 +15,16 @@ int main()
         }
     }
 
+
+    // 'l' -> codigo ASCII -> 49
+    // for (auto c : s){
+    //     if (c != '+'){
+    //         list.push_back(c - '0');
+    //     }
+    // }
+
+    //O (n log(n))
+    //sort(begin(list),end(list));
     sort(list.begin(),list.end());
 
     for (int i = 0; i<list.size();i++){
