@@ -1,8 +1,9 @@
 #include <iostream>
 using namespace std;
 
-int main()
-{
+// #include <bits/stdc++.h>
+
+int main() {
     int h,w,n;
     int ans = 0;
     cin>> h >> w >> n;
@@ -17,9 +18,12 @@ int main()
     }
 
     // Formula
-    ans = ceil(n/m);
+    //ans = ceil(n/m);
 
     // Formula
-    
+    // ans = min()
+
+    cout << ans;
+
     return 0;
 }
