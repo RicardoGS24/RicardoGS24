@@ -38,3 +38,9 @@ int main() {
     cout << remove << endl;
     return 0;
 }
+
+
+// PRIORITY QUEUE C++
+// Es una estructura de datos que funciona como una queue
+// Lo que diferencia es que los elementos están ordenados
+// Mas grandes -> más chico
